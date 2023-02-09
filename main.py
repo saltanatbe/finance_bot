@@ -12,8 +12,8 @@ dp = Dispatcher(bot)
 
 keyboard1 = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add("Категории").insert("Затраты")
 
-categories = ["кафе"]
-spendings = {"кафе": 12}
+categories = []
+spendings = {}
 
 @dp.message_handler(commands=['start', 'help'])
 async def welcome(message: types.Message):
@@ -28,6 +28,7 @@ async def welcome(message: types.Message):
 async def add_category(message: types.Message):
     categories.append(str(message.text[5:]).lower())
     answer_message = "Добавлена категория" + str(message.text[4:]).lower()
+    spendings[str(message.text[4:]).lower()] = 0
     await message.answer(answer_message)
 
 @dp.message_handler(commands=["Категории"])

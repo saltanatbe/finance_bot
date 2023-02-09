@@ -1,0 +1,4 @@
+нужно добавить token с @BotFather
+и вставить его на 7 строке main.py:
+
+API_TOKEN = 'token'
